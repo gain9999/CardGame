@@ -33,75 +33,54 @@ $(document).ready(function() {
 
 	jQuery.each(cards, function(index, person) {
 		// console.log(person);
-		// alert("adding " + person.name + "to screen");
 		$(".sponsorListHolder").append(
 			'<div title="Click to flip" class="sponsor">'+
 				'<div class="sponsorFlip">'+
 					'<img alt="" src="img/sponsors/google.png">'+
 				'</div>'+
 				'<div class="sponsorData">'+
-					'<img alt="" src="img/'+ person.image +'">'+
+					'<img alt="" src="img/'+ person.image +'" height="90%">'+
 				'</div>'+
-		'</div>');
+			'</div>'
+		);
 	});
 
-	$('.sponsorFlip').bind("click",function(){
+	$('.sponsorFlip').bind("click", function() {
 
-        // $(this) point to the clicked .sponsorFlip element (caching it in elem for speed):
-
-        var elem = $(this);
-
-        // data('flipped') is a flag we set when we flip the element:
-
-        if(elem.data('flipped'))
-        {
-            // If the element has already been flipped, use the revertFlip method
-            // defined by the plug-in to revert to the default state automatically:
-
-            elem.revertFlip();
-
-            // Unsetting the flag:
-            elem.data('flipped',false)
-        }
-        else
-        {
-            // Using the flip method defined by the plugin:
-
-            elem.flip({
-                direction:'lr',
-                speed: 350,
-                onBefore: function(){
-                    // Insert the contents of the .sponsorData div (hidden
-                    // from view with display:none) into the clicked
-                    // .sponsorFlip div before the flipping animation starts:
-
-                    elem.html(elem.siblings('.sponsorData').html());
-                }
-            });
-
-            // Setting the flag:
-            elem.data('flipped',true);
-        }
-    });
+		var elem = $(this);
+		if(elem.data('flipped')) {
+			elem.revertFlip();
+			elem.data('flipped',false)
+		} else {
+			elem.flip( {
+				direction:'lr',
+				speed: 350,
+				onBefore: function(){
+					// Insert the contents of the .sponsorData div (hidden
+					// from view with display:none) into the clicked
+					// .sponsorFlip div before the flipping animation starts:
+					elem.html(elem.siblings('.sponsorData').html());
+				}
+			});
+			elem.data('flipped',true);
+		}
+	});
 
 });
 
 function shuffle(array) {
-  var currentIndex = array.length, temporaryValue, randomIndex ;
+	var currentIndex = array.length, temporaryValue, randomIndex ;
 
-  // While there remain elements to shuffle...
-  while (0 !== currentIndex) {
+	// While there remain elements to shuffle...
+	while (0 !== currentIndex) {
+		// Pick a remaining element...
+		randomIndex = Math.floor(Math.random() * currentIndex);
+		currentIndex -= 1;
 
-    // Pick a remaining element...
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex -= 1;
-
-    // And swap it with the current element.
-    temporaryValue = array[currentIndex];
-    array[currentIndex] = array[randomIndex];
-    array[randomIndex] = temporaryValue;
-  }
-
-  return array;
-}
->>>>>>> 5780263daefecb497c0671cf4981996edf4c03df
+		// And swap it with the current element.
+		temporaryValue = array[currentIndex];
+		array[currentIndex] = array[randomIndex];
+		array[randomIndex] = temporaryValue;
+	}
+	return array;
+}>>>>>>> 5780263daefecb497c0671cf4981996edf4c03df
