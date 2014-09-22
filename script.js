@@ -6,6 +6,7 @@ $(document).ready(function(){
         // $(this) point to the clicked .sponsorFlip element (caching it in elem for speed):
 
         var elem = $(this);
+        alert("click!");
 
         // data('flipped') is a flag we set when we flip the element:
 
