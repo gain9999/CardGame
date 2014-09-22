@@ -12,6 +12,10 @@ body {
 	font-family:Arial, Helvetica, sans-serif;
 }
 
+#replay, #start {
+	cursor: pointer;
+}
+
 #topbar {
 	z-index:9998;
 	margin-top:0;
@@ -20,18 +24,40 @@ body {
 	height:13vmin;
 }
 
-#stopwatch, #replay {
+#stopwatch, #replay, #start, #game_title {
+	text-shadow: 0px 0px 50px rgba(150, 150, 150, 1);
 	z-index: 9999;
 	width:100%;
 	font-weight:bold;
-	position:absolute;
-    top: 3vmin;
-    left : 0;
     font-size: 6vmin;
 	background:none;
 	text-align: center;
 	font-family:"Myriad Pro",Arial,Helvetica,sans-serif;
 	text-shadow:0 1px 1x white;
+}
+
+#stopwatch, #replay {
+	position:absolute;
+    top: 3vmin;
+    left: 0;
+}
+
+#start, #game_title {
+	width:100%;
+	/*background:green;*/
+	position:absolute;
+}
+
+#game_title {
+	font-size: 20vmin;
+}
+
+#start_wrapper {
+	width: 100%;
+	/*background-color: red;*/
+	position: absolute;
+	top: 0;
+	left: 0;
 }
 
 .sponsorListHolder img {
@@ -49,7 +75,6 @@ body {
 	height:30vmin;
 	float:center;
 	margin:4px;
-	
 	/* Giving the sponsor div a relative positioning: */
 	position:relative;
 	display:inline-block;
@@ -116,7 +141,6 @@ h2{
 	font-size:14px;
 	font-weight:normal;
 	text-align:center;
-	
 	position:absolute;
 	right:40px;
 	top:40px;

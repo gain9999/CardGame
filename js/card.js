@@ -1,9 +1,30 @@
 
 var friendList = [
-	"Benzson", "June", "Marc", "Meng", "N_Top", 
-	"Ong", "Ping", "Plan", "Poomimy", "Tan_Pee",
-	"Term", "Tony"
+	"Aum",
+	"Benzson",
+	"Eve",
+	"Film",
+	"June",
+	"Marc",
+	"Meng",
+	"N_Top",
+	"Ong",
+	"Ping",
+	"Plan",
+	"Plug",
+	"Poomimy",
+	"Punpun",
+	"Tan",
+	"Tan_Pee",
+	"Term",
+	"To",
+	"Tony",
+	"Top",
+	"Yod"
 ];
+
+var fadeDelay = 2000;
+var flipDelay = 1000;
 
 $(document).ready(function() {
 
@@ -54,18 +75,23 @@ $(document).ready(function() {
 
 	$('#stopwatch').css({
         position : "absolute",
-        // top : 3*vmin,
         left : 0,
         fontSize : 6*vmin
     });
 
-    $('.sponsorListHolder').css({
-    	// width : $(window).width(),
-    	// marginTop : 12*vmin,
-    	// paddingTop : 10*vmin
+    $('#start_wrapper').css({
+    	top: 35*vmin
     });
 
-    console.log($('#stopwatch').offsetWidth);
+    $('#topbar').fadeTo(0, 0.1);
+    $('#main').fadeTo(0, 0.1);
+    $('body').hide().fadeIn(fadeDelay);
+
+    $('#start').bind("click", function() {
+    	$('#topbar').css('opacity','1').hide().fadeIn(fadeDelay);
+    	$('#main').css('opacity','1').hide().fadeIn(fadeDelay);
+    	$('#start_wrapper').hide();
+    });
 
 	var flippedCards = [];
 	var counter = 0;
@@ -94,7 +120,7 @@ $(document).ready(function() {
 				setTimeout(function() {
 					
 					jQuery.each(flippedCards, function(index, value) {
-						value.fadeTo(1000, 0.6);
+						value.fadeTo(flipDelay, 0.4);
 					});
 					console.log(name + " ======= correct!");
 					flippedCards = [];
@@ -106,7 +132,7 @@ $(document).ready(function() {
 						console.log("===================================end");
 
 						$('#stopwatch').append(
-							'<a id="replay">Replay</a>'
+							'<span id="replay">Replay</span>'
 						);
 
 
@@ -132,12 +158,15 @@ $(document).ready(function() {
 						});
 
 						$('#replay').bind("click", function() {
-							location.reload();
+							$('body').fadeTo(fadeDelay, 0);
+							setTimeout(function() {
+								location.reload();
+							}, fadeDelay);
 						});
 
 					}
 
-				}, 1200);
+				}, flipDelay);
 
 			} else {
 
@@ -149,7 +178,7 @@ $(document).ready(function() {
 					console.log(name + " ======= wrong!");
 					flippedCards = [];
 				
-				}, 1200);
+				}, flipDelay);
 
 			}
 
