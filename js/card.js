@@ -23,6 +23,8 @@ var friendList = [
 	"Yod"
 ];
 
+var playable = false;
+
 var fadeDelay = 2000;
 var flipDelay = 1000;
 
@@ -88,6 +90,7 @@ $(document).ready(function() {
     $('body').hide().fadeIn(fadeDelay);
 
     $('#start').bind("click", function() {
+    	playable = true;
     	$('#topbar').css('opacity','1').hide().fadeIn(fadeDelay);
     	$('#main').css('opacity','1').hide().fadeIn(fadeDelay);
     	$('#start_wrapper').hide();
@@ -98,12 +101,10 @@ $(document).ready(function() {
 
 	$('.sponsorFlip').bind("click", function() {
 
-		if(counter==0) myTimer.Timer.play();
-
 		var card = $(this);
-		if(card.data('flipped')||flippedCards.length>=2) {
-			return;
-		}
+		if(!playable||card.data('flipped')||flippedCards.length>=2) return;
+
+		if(counter==0) myTimer.Timer.play();
 
 		flippedCards.push(card);
 		toggleFlip(card);
